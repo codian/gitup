@@ -7,6 +7,7 @@ default: &default
   dir: "project_dir_of_remote_server"
   server: "remote_server_to_upload"
   logfile: "log_file_path_from_[dir]_to_tail_log"
+  scp_cmd: "scp"
   restart_cmd: "command_to_restart_server"
   start_cmd: "command_to_start_server"
   stop_cmd: "command_to_stop_server"

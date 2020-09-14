@@ -1,7 +1,7 @@
 class Option
   OPTION_NAMES = %w{
     user server dir logfile
-    restart_cmd start_cmd stop_cmd
+    scp_cmd restart_cmd start_cmd stop_cmd
     restart tailog ignore_untracked
   }
 
@@ -76,7 +76,11 @@ class Option
       local_file = file
       remote_file = File.join(@options.dir, file)
     end
-    cmd = "scp #{ssh_opt} #{local_file} #{address}:#{remote_file}"
+    if scp_cmd == "allakey"
+      cmd = "allakey scp -e \"#{ssh_opt} #{local_file} #{address}:#{remote_file}\""
+    else
+      cmd = "scp #{ssh_opt} #{local_file} #{address}:#{remote_file}"
+    end
     puts cmd
     system cmd
   end
